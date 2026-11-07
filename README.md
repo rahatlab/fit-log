@@ -81,5 +81,5 @@ Fallback:     https://api.api-store.workers.dev/api/fitlog
 
 ## 📬 Submission
 
-- **Live Link:** _deployment pending_
-- **GitHub Repository Link:** _this repository_
+- **Live Link:** [https://fit-log-pi-ashy.vercel.app](https://fit-log-pi-ashy.vercel.app)
+- **GitHub Repository Link:** [https://github.com/rahatlab/fit-log]https://github.com/rahatlab/fit-log

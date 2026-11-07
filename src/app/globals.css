@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #08080a;
+  --foreground: #ededed;
+}
+
+@theme {
+  --color-accent: #ccff00;
+  --color-surface: #121316;
+  --color-surface-2: #1a1b1f;
+  --color-line: #26272c;
+  --color-muted: #9b9da5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-oswald);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#library {
+  scroll-margin-top: 5.5rem;
+}
+
+::selection {
+  background: #ccff00;
+  color: #000;
+}
+
+@layer components {
+  .btn-accent {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md bg-accent px-5 py-3 text-xs font-bold tracking-wider text-black uppercase transition hover:brightness-95 disabled:pointer-events-none disabled:opacity-40;
+  }
+
+  .btn-outline {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-line bg-transparent px-5 py-3 text-xs font-semibold text-white transition hover:border-white/40 hover:bg-white/5 disabled:pointer-events-none disabled:opacity-40;
+  }
+
+  .card {
+    @apply rounded-xl border border-line bg-surface;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-full bg-accent px-2.5 py-1 text-[10px] leading-none font-bold tracking-wider text-black uppercase;
+  }
+
+  .field-select {
+    @apply appearance-none rounded-md border border-line bg-surface py-2 pr-9 pl-3 text-sm text-white transition outline-none hover:border-white/30 focus:border-accent;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-toast {
+  animation: toast-in 0.25s ease-out;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 1.1s linear infinite;
 }

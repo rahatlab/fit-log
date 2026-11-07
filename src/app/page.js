@@ -4,21 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { fetchWorkouts } from "@/lib/api";
 import WorkoutCard from "@/components/WorkoutCard";
+import { WorkoutCardSkeleton } from "@/components/skeletons";
 import { DumbbellIcon } from "@/components/icons";
-
-function CardSkeleton() {
-  return (
-    <div className="card overflow-hidden">
-      <div className="aspect-[16/10] animate-pulse bg-surface-2" />
-      <div className="flex flex-col gap-3 p-4">
-        <div className="h-4 w-24 animate-pulse rounded-full bg-surface-2" />
-        <div className="h-5 w-2/3 animate-pulse rounded bg-surface-2" />
-        <div className="h-3 w-1/2 animate-pulse rounded bg-surface-2" />
-        <div className="h-3 w-3/4 animate-pulse rounded bg-surface-2" />
-      </div>
-    </div>
-  );
-}
 
 export default function Home() {
   const [workouts, setWorkouts] = useState([]);
@@ -106,7 +93,7 @@ export default function Home() {
             </p>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 6 }).map((_, index) => (
-                <CardSkeleton key={index} />
+                <WorkoutCardSkeleton key={index} />
               ))}
             </div>
           </>

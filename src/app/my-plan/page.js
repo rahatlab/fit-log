@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePlan } from "@/context/PlanContext";
 import { useToast } from "@/components/Toast";
 import StatsRow from "@/components/StatsRow";
+import { PlanRowSkeleton } from "@/components/skeletons";
 import {
   CheckIcon,
   ChevronDownIcon,
@@ -211,8 +212,13 @@ export default function MyPlanPage() {
       {/* List */}
       <div className="mt-5">
         {loading ? (
-          <div className="card px-6 py-16 text-center text-sm text-muted">
-            Loading workouts…
+          <div role="status">
+            <p className="text-sm text-muted">Loading workouts…</p>
+            <div className="mt-4 flex flex-col gap-4">
+              <PlanRowSkeleton />
+              <PlanRowSkeleton />
+              <PlanRowSkeleton />
+            </div>
           </div>
         ) : visibleList.length === 0 ? (
           <div className="flex flex-col items-center rounded-xl border border-dashed border-line px-6 py-16 text-center">
